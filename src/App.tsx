@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {Filtr} from "./components/filtering/Filtr";
 import {UnInput} from "./components/universalInput/UnInput";
 import {Input} from "./components/inputWithOutButton/Input";
 import {UniversalButton} from "./components/inputWithOutButton/UniversalButton";
-import {Tren} from "./components/Tren";
 import {ItemType, Select} from "./components/selectComponent/Select";
+import {PrimerComponent} from "./components/reduser/reduser";
 
 
 type BanknotsType = 'Dollars' | 'RUBLS'
@@ -31,9 +30,6 @@ let massObj: ItemType[] = [
     }
 ]
 
-const onChangeCallBackForSelect = (id: any) => {
-    console.log(`Лишка с id ${id} выбрана`)
-}
 
 function App() {
 //типо данные,которые приходят с сервера
@@ -113,9 +109,6 @@ function App() {
                 {message2.map((el, index) => {
                     return <div key={index}>{el.message}</div>
                 })}
-            </div>
-            <div>
-                <Tren></Tren>
             </div>
             <div>
                 <h2>Свой select c реагированием на нажатие кнопок</h2>
