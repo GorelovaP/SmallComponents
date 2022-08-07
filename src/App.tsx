@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import './App.css';
 import {Filtr} from "./components/filtering/Filtr";
 import {UnInput} from "./components/universalInput/UnInput";
@@ -89,6 +89,12 @@ function App() {
 
 //для селекта
     let [titleForSelect, setTitleForSelect] = useState<any>(null)
+    let SelectMemo = React.memo(Select)
+    let InputMemo = React.memo(Input)
+    let UnInputMemo = React.memo(UnInput)
+    let UniversalButtonMemo = React.memo(UniversalButton)
+
+
     return (
         <div className="App ">
             <div>
@@ -97,22 +103,22 @@ function App() {
             </div>
             <div>
                 <h2>Универсальный input с кнопкой</h2>
-                <UnInput callback={GetTitle}/>
+                <UnInputMemo callback={GetTitle}/>
                 {message.map((el, index) => {
                     return <div key={index}>{el.message}</div>
                 })}
             </div>
             <div>
                 <h2>Input отдельно,кнопка отдельно</h2>
-                <Input title={title} setTitle={setTitle}/>
-                <UniversalButton callback={AddTitle} name={"+"}/>
+                <InputMemo title={title} setTitle={setTitle}/>
+                <UniversalButtonMemo callback={AddTitle} name={"+"}/>
                 {message2.map((el, index) => {
                     return <div key={index}>{el.message}</div>
                 })}
             </div>
             <div>
                 <h2>Свой select c реагированием на нажатие кнопок</h2>
-                <Select SelectedElementValue={titleForSelect} onChange={setTitleForSelect} items={massObj}/>
+                <SelectMemo SelectedElementValue={titleForSelect} onChange={setTitleForSelect} items={massObj}/>
             </div>
         </div>
 
