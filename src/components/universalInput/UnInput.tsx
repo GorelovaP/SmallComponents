@@ -1,21 +1,24 @@
-import {ChangeEvent, useState} from "react";
-type UnInputType={
-    callback:(title:string)=>void;
+import {ChangeEvent, useCallback, useState} from "react";
+
+type UnInputType = {
+    callback: (title: string) => void;
 }
-export const UnInput =(props:UnInputType)=>{
+export const UnInput = (props: UnInputType) => {
 
     let [title, setTitle] = useState("")
-    const textHandler = (event:ChangeEvent<HTMLInputElement>) =>{
+    const textHandler = (event: ChangeEvent<HTMLInputElement>) => {
         setTitle(event.currentTarget.value);
     }
-    const buttonHandler = () =>{
-       props.callback(title);
-       setTitle('');
-    }
-    return(
+
+    let memoCallBackButtonHandler = useCallback(() => {
+        props.callback(title);
+        setTitle('');
+    }, [title])
+
+    return (
         <div>
             <input value={title} onChange={textHandler}/>
-            <button onClick={buttonHandler}>+</button>
+            <button onClick={memoCallBackButtonHandler}>+</button>
         </div>
     )
 }

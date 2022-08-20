@@ -7,12 +7,12 @@ export const UseMemo = () => {
     let [a, setA] = useState<number>(3)
     let [b, setB] = useState<number>(3)
 
-    let resultA = 1;
+    let resultA: number = 1;
     let resultB = 1;
 
     resultA = useMemo(() => {
         let TempResult = 1;
-        for (let i = 0; i < a; i++) {
+        for (let i = 0; i < a ; i++) {
 
             let FAKE = 0;
             while (FAKE< 10000000){FAKE++
