@@ -1,11 +1,11 @@
-import React, {useMemo, useState} from 'react';
+import React, { useState} from 'react';
 import './App.css';
 import {Filtr} from "./components/filtering/Filtr";
 import {UnInput} from "./components/universalInput/UnInput";
 import {Input} from "./components/inputWithOutButton/Input";
 import {UniversalButton} from "./components/inputWithOutButton/UniversalButton";
 import {ItemType, Select} from "./components/selectComponent/Select";
-import {PrimerComponent} from "./components/reduser/reduser";
+import {Clock} from "./components/clock/Clock";
 
 
 type BanknotsType = 'Dollars' | 'RUBLS'
@@ -119,6 +119,10 @@ function App() {
             <div>
                 <h2>Свой select c реагированием на нажатие кнопок</h2>
                 <SelectMemo SelectedElementValue={titleForSelect} onChange={setTitleForSelect} items={massObj}/>
+            </div>
+            <div>
+                Clock with UseEffect and clear sideEffect
+                <Clock/>
             </div>
         </div>
 
