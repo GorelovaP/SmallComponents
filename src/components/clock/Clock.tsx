@@ -1,10 +1,14 @@
 import React, {useEffect, useState} from "react";
+import {DigitalClock} from "./digital/DigitalClock";
+import {AnalogClock} from "./analog/AnalogClock";
 
 
-type ClockPropsType = {}
+type ClockPropsType = {
+    mode?: "digital" | "analog"
+}
 export const Clock = (props: ClockPropsType) => {
 
-    const [date, setDate] = useState(new Date());
+    const [date, setDate] = useState<Date>(new Date());
 
     useEffect(() => {
         const udInterval1 = setInterval(() => {
@@ -15,16 +19,11 @@ export const Clock = (props: ClockPropsType) => {
         } // при размонтировке произойдет удаление сайд эффекта от setInterval
     }, [])//запускаем 1 раз, т к пустой массив зависимостей
 
-    const getRightFormat = (string: string) => string.length === 1 ? "0" + string : string
-
-    let hours = getRightFormat(JSON.stringify(date.getHours()))
-    let minutes = getRightFormat(JSON.stringify(date.getMinutes()))
-    let seconds = getRightFormat(JSON.stringify(date.getSeconds()))
-
 
     return (
         <div>
-            {hours + ":" + minutes + ":" + seconds}
+            {props.mode === "analog" ? <DigitalClock date={date}/> :
+                <AnalogClock date={date}/>}
         </div>
     )
 }

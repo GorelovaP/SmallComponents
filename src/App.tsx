@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import {Filtr} from "./components/filtering/Filtr";
 import {UnInput} from "./components/universalInput/UnInput";
@@ -121,8 +121,10 @@ function App() {
                 <SelectMemo SelectedElementValue={titleForSelect} onChange={setTitleForSelect} items={massObj}/>
             </div>
             <div>
-                Clock with UseEffect and clear sideEffect
-                <Clock/>
+                <Clock mode={"digital"}/>
+            </div>
+            <div>
+                <Clock mode={"analog"}/>
             </div>
         </div>
 
