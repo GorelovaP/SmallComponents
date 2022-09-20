@@ -6,6 +6,7 @@ import {Input} from "./components/inputWithOutButton/Input";
 import {UniversalButton} from "./components/inputWithOutButton/UniversalButton";
 import {ItemType, Select} from "./components/selectComponent/Select";
 import {Clock} from "./components/clock/Clock";
+import {Tsx} from "./components/s";
 
 
 type BanknotsType = 'Dollars' | 'RUBLS'
@@ -125,6 +126,9 @@ function App() {
             </div>
             <div>
                 <Clock mode={"analog"}/>
+            </div>
+            <div>
+                <Tsx isAdmin={true}/>
             </div>
         </div>
 
